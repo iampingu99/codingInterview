@@ -1,17 +1,19 @@
-package BruteForce;
+package BruteForce.NM;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class BOJ15652 {
+public class BOJ15655 {
 
     public static StringBuilder sb = new StringBuilder();
     public static int N, M;
     public static int arr[];
+    public static int base[];
 
-    public static void duplicatePermutationASC(int depth, int r){
+    public static void permutationASC(int depth, int r){
         if(depth == M){
             for(int val : arr){
                 sb.append(val).append(' ');
@@ -21,8 +23,8 @@ public class BOJ15652 {
         }
 
         for(int i = r; i<N; i++){
-            arr[depth] = i+1;
-            duplicatePermutationASC(depth + 1, i);
+            arr[i] = base[i];
+            permutationASC(depth + 1, i + 1);
         }
     }
 
@@ -32,11 +34,16 @@ public class BOJ15652 {
 
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
-
         arr = new int[M];
+        base = new int[N];
 
-        duplicatePermutationASC(0, 0);
+        st = new StringTokenizer(br.readLine());
+        for(int i = 0; i<N; i++){
+            base[i] = Integer.parseInt(st.nextToken());
+        }
 
+        Arrays.sort(base);
+        permutationASC(0, 0);
         System.out.println(sb);
     }
 }

@@ -1,35 +1,20 @@
-package BruteForce;
+package BruteForce.NM;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BOJ15560 {
+public class BOJ15652 {
 
     public static StringBuilder sb = new StringBuilder();
-    public static int N,M;
-    public static int[] arr;
+    public static int N, M;
+    public static int arr[];
 
-    public static void useRecursive(int depth, int r){
+    public static void duplicatePermutationASC(int depth, int r){
         if(depth == M){
-            for(int i = 0; i< M; i++){
-                sb.append(arr[i]).append(' ');
-            }
-            sb.append('\n');
-            return;
-        }
-        if(r == N) return;
-
-        arr[depth] = r+1;
-        useRecursive(depth+1, r+1);
-        useRecursive(depth, r+1);
-    }
-
-    public static void useBackTracking(int depth, int r){
-        if(depth == M){
-            for(int i = 0; i< M; i++){
-                sb.append(arr[i]).append(' ');
+            for(int val : arr){
+                sb.append(val).append(' ');
             }
             sb.append('\n');
             return;
@@ -37,10 +22,9 @@ public class BOJ15560 {
 
         for(int i = r; i<N; i++){
             arr[depth] = i+1;
-            useBackTracking(depth+1, i+1);
+            duplicatePermutationASC(depth + 1, i);
         }
     }
-
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -48,11 +32,9 @@ public class BOJ15560 {
 
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
-
         arr = new int[M];
 
-        useRecursive(0, 0);
-
+        duplicatePermutationASC(0, 0);
         System.out.println(sb);
     }
 }
