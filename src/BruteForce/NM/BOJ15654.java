@@ -1,4 +1,4 @@
-package BruteForce;
+package BruteForce.NM;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,9 +10,9 @@ public class BOJ15654 {
 
     public static StringBuilder sb = new StringBuilder();
     public static int N, M;
-    public static int base[];
     public static int arr[];
     public static boolean visited[];
+    public static int base[];
 
     public static void permutation(int depth){
         if(depth == M){
@@ -37,20 +37,17 @@ public class BOJ15654 {
 
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
-
         base = new int[N];
         arr = new int[M];
         visited = new boolean[N];
 
         st = new StringTokenizer(br.readLine());
-
         for(int i = 0; i<N; i++){
             base[i] = Integer.parseInt(st.nextToken());
         }
+
         Arrays.sort(base);
-
         permutation(0);
-
         System.out.println(sb);
     }
 }

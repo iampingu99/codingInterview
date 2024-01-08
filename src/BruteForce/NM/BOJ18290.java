@@ -1,4 +1,4 @@
-package BruteForce;
+package BruteForce.NM;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,10 +9,10 @@ public class BOJ18290 {
 
     public static StringBuilder sb = new StringBuilder();
     public static int N, M, K;
-    public static int[][] matrix;
-    public static boolean[][] visited;
-    public static int[] dx = {-1, 1, 0, 0};
-    public static int[] dy = {0, 0, -1, 1};
+    public static int matrix[][];
+    public static boolean visited[][];
+    public static int dx[] = {-1, 1, 0, 0};
+    public static int dy[] = {0, 0, -1, 1};
     public static int MAX = Integer.MIN_VALUE;
 
     public static void matrixPermutation(int row, int col, int sum, int k){
